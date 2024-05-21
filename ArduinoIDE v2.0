@@ -1,0 +1,42 @@
+int  btnPin1 = 13; // Pino do botão 1
+int  btnPin2 = 12; // Pino do botão 2
+int  btnPin3 = 11; // Pino do botão 3
+int  btnPin4 = 10; // Pino do botão 4
+
+bool btnState1; // Estado do botão 1 
+bool btnState2; // Estado do botão 2 
+bool btnState3; // Estado do botão 3 
+bool btnState4; // Estado do botão 4 
+
+void setup() {
+  Serial.begin(9600); // Inicia a comunicação serial a 9600 bps
+
+  pinMode(btnPin1, INPUT);
+  pinMode(btnPin2, INPUT);
+  pinMode(btnPin3, INPUT);
+  pinMode(btnPin4, INPUT);
+}
+
+void loop() {
+  btnState1 = digitalRead(btnPin1);
+  btnState2 = digitalRead(btnPin2);
+  btnState3 = digitalRead(btnPin3);
+  btnState4 = digitalRead(btnPin4);
+  
+
+  // Envia os estados dos botões pela serial
+  if (btnState1 == HIGH) {
+    Serial.write("btn1");
+  } 
+  if (btnState2 == HIGH) {
+    Serial.write("btn2");
+  } 
+  if (btnState3 == HIGH) {
+    Serial.write("btn3");
+  } 
+  if (btnState4 == HIGH) {
+    Serial.write("btn4");
+  } 
+  
+  delay(300); // Pequeno atraso para evitar muitas leituras
+}
