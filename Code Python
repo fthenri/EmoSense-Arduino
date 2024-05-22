@@ -1,21 +1,51 @@
 import serial
-import time
-import os
-os.system('cls')
+import tkinter as tk
+from PIL import Image, ImageTk
 
-# Configuração da porta serial 
-ser = serial.Serial('COM5', 9600, timeout=1)
 
-# Função para ler os dados da serial
-def read_serial():
-    while True:
-        if ser.in_waiting > 0:
-            data = ser.readline().decode('utf-8').strip()
-            if data:
-                print(f"Received: {data}")
+def atualizar_interface(): # Essa função atualizará a interface com base nos sinais recebidos do Arduino
+    
+    mensagem = ser.readline().decode().strip()
+    if mensagem == '1':
+        mostrar_imagem("imagem1.jpg")
+    elif mensagem == '2':
+        mostrar_imagem("imagem2.jpg")
+    elif mensagem == '3':
+        mostrar_imagem("imagem3.jpg")
+    elif mensagem == '4':
+        mostrar_imagem("imagem4.jpg")
+    else:
+        mostrar_imagem("imagemerro.jpg")
 
-# Inicia a leitura dos dados da serial
-if __name__ == "__main__":
-    print("Aguardando dados do Arduino...")
-    time.sleep(2)  # Tempo para garantir que a conexão serial esteja estável
-    read_serial()
+    
+    root.after(100, atualizar_interface)
+
+# Função para mostrar a imagem na interface
+def mostrar_imagem(caminho_imagem): # Função que mostrará a imagem na interface
+    
+    imagem = Image.open(caminho_imagem)
+    imagem = imagem.resize((300, 300), Image.ANTIALIAS) 
+
+    
+    imagem_tk = ImageTk.PhotoImage(imagem)
+
+    
+    label_imagem.config(image=imagem_tk)
+    label_imagem.image = imagem_tk
+
+
+ser = serial.Serial('COMX', 9600)  # COMX é a porta do serial (te amo carlos)
+
+
+root = tk.Tk()
+root.title("EMOSENSE")
+
+
+label_imagem = tk.Label(root)
+label_imagem.pack()
+
+
+root.after(100, atualizar_interface)
+
+root.mainloop()
+#guile
