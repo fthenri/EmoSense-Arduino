@@ -1,0 +1,21 @@
+import serial
+import time
+import os
+os.system('cls')
+
+# Configuração da porta serial 
+ser = serial.Serial('COM5', 9600, timeout=1)
+
+# Função para ler os dados da serial
+def read_serial():
+    while True:
+        if ser.in_waiting > 0:
+            data = ser.readline().decode('utf-8').strip()
+            if data:
+                print(f"Received: {data}")
+
+# Inicia a leitura dos dados da serial
+if __name__ == "__main__":
+    print("Aguardando dados do Arduino...")
+    time.sleep(2)  # Tempo para garantir que a conexão serial esteja estável
+    read_serial()
