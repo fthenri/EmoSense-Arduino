@@ -8,6 +8,8 @@ bool btnState2; // Estado do botão 2
 bool btnState3; // Estado do botão 3 
 bool btnState4; // Estado do botão 4 
 
+int buzzer = 8;
+
 void setup() {
   Serial.begin(9600); // Inicia a comunicação serial a 9600 bps
 
@@ -15,6 +17,7 @@ void setup() {
   pinMode(btnPin2, INPUT);
   pinMode(btnPin3, INPUT);
   pinMode(btnPin4, INPUT);
+   pinMode(buzzer, OUTPUT);
 }
 
 void loop() {
@@ -22,21 +25,35 @@ void loop() {
   btnState2 = digitalRead(btnPin2);
   btnState3 = digitalRead(btnPin3);
   btnState4 = digitalRead(btnPin4);
-  
+
 
   // Envia os estados dos botões pela serial
   if (btnState1 == HIGH) {
     Serial.write("btn1");
+    tone(buzzer, 2500);
+    delay(100);
+    noTone(buzzer);
+    delay(1000); // Pequeno atraso para evitar muitas leituras
   } 
   if (btnState2 == HIGH) {
     Serial.write("btn2");
+    tone(buzzer, 2500);
+    delay(100);
+    noTone(buzzer);
+    delay(1000); // Pequeno atraso para evitar muitas leituras
   } 
   if (btnState3 == HIGH) {
     Serial.write("btn3");
+    tone(buzzer, 2500);
+    delay(100);
+    noTone(buzzer);
+    delay(1000); // Pequeno atraso para evitar muitas leituras
   } 
   if (btnState4 == HIGH) {
     Serial.write("btn4");
+    tone(buzzer, 2500);
+    delay(100);
+    noTone(buzzer);
+    delay(1000); // Pequeno atraso para evitar muitas leituras
   } 
-  
-  delay(300); // Pequeno atraso para evitar muitas leituras
 }
