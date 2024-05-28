@@ -1,51 +1,80 @@
 import serial
+import time
+import os
 import tkinter as tk
+from tkinter import Label
 from PIL import Image, ImageTk
+import threading
 
+# Configuração da porta serial
+ser = serial.Serial('COM6', 9600, timeout=1)
 
-def atualizar_interface(): # Essa função atualizará a interface com base nos sinais recebidos do Arduino
-    
-    mensagem = ser.readline().decode().strip()
-    if mensagem == '1':
-        mostrar_imagem("imagem1.jpg")
-    elif mensagem == '2':
-        mostrar_imagem("imagem2.jpg")
-    elif mensagem == '3':
-        mostrar_imagem("imagem3.jpg")
-    elif mensagem == '4':
-        mostrar_imagem("imagem4.jpg")
-    else:
-        mostrar_imagem("imagemerro.jpg")
+# Função para mostrar imagem 1
+def show_image1():
+    img = Image.open(r"C:\Users\gmvc\OneDrive\Documentos\Guilherme Mourão\GMVC\Emosense\EmoSense-Arduino\imagem1.jpg")
+    img = img.resize((250, 250), Image.LANCZOS)
+    img_tk = ImageTk.PhotoImage(img)
+    panel.configure(image=img_tk)
+    panel.image = img_tk
+    print("Opção 1 selecionada")
 
-    
-    root.after(100, atualizar_interface)
+# Função para mostrar imagem 2
+def show_image2():
+    img = Image.open(r"C:\Users\gmvc\OneDrive\Documentos\Guilherme Mourão\GMVC\Emosense\EmoSense-Arduino\imagem2.jpg")
+    img = img.resize((250, 250), Image.LANCZOS)
+    img_tk = ImageTk.PhotoImage(img)
+    panel.configure(image=img_tk)
+    panel.image = img_tk
+    print("Opção 2 selecionada")
 
-# Função para mostrar a imagem na interface
-def mostrar_imagem(caminho_imagem): # Função que mostrará a imagem na interface
-    
-    imagem = Image.open(caminho_imagem)
-    imagem = imagem.resize((300, 300), Image.ANTIALIAS) 
+# Função para mostrar imagem 3
+def show_image3():
+    img = Image.open(r"C:\Users\gmvc\OneDrive\Documentos\Guilherme Mourão\GMVC\Emosense\EmoSense-Arduino\imagem3.png")
+    img = img.resize((250, 250), Image.LANCZOS)
+    img_tk = ImageTk.PhotoImage(img)
+    panel.configure(image=img_tk)
+    panel.image = img_tk
+    print("Opção 3 selecionada")
+def show_image4():
+    img = Image.open(r"C:\Users\gmvc\OneDrive\Documentos\Guilherme Mourão\GMVC\Emosense\EmoSense-Arduino\images.png")
+    img = img.resize((250, 250), Image.LANCZOS)
+    img_tk = ImageTk.PhotoImage(img)
+    panel.configure(image=img_tk)
+    panel.image = img_tk
+    print("Opção 4 selecionada")
 
-    
-    imagem_tk = ImageTk.PhotoImage(imagem)
+# Função para ler os dados da serial e atualizar a interface
+def read_serial():
+    while True:
+        if ser.in_waiting > 0:
+            data = ser.readline().decode('utf-8').strip()
+            if data:
+                print(f"Received: {data}")
+                if data == "btn1":
+                    show_image1()
+                elif data == "btn2":
+                    show_image2()
+                elif data == "btn3":
+                    show_image3()
+                elif data == "btn4":
+                    show_image4()
 
-    
-    label_imagem.config(image=imagem_tk)
-    label_imagem.image = imagem_tk
-
-
-ser = serial.Serial('COMX', 9600)  # COMX é a porta do serial (te amo carlos)
-
-
+# Inicializa a interface gráfica
 root = tk.Tk()
-root.title("EMOSENSE")
+root.title("Interface Serial com Tkinter")
 
+# Configura o painel para mostrar imagens
+panel = Label(root)
+panel.pack(side="bottom", fill="both", expand="yes")
 
-label_imagem = tk.Label(root)
-label_imagem.pack()
-
-
-root.after(100, atualizar_interface)
-
-root.mainloop()
-#guile
+if __name__ == "__main__":
+    print("Aguardando dados do Arduino...")
+    time.sleep(2)  # Tempo para garantir que a conexão serial esteja estável
+    
+    # Inicia a leitura dos dados da serial em um thread separado para não bloquear a interface
+    thread = threading.Thread(target=read_serial)
+    thread.daemon = True
+    thread.start()
+    
+    # Inicia o loop principal da interface Tkinter
+    root.mainloop()
