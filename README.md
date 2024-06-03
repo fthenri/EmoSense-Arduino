@@ -88,5 +88,5 @@ Cada botão irá iniciar uma seleção de imagens na tela do seu computador.
 - José Gabriel Santiago de Santana - jgss@cesar.school
 - Lucas Rodrigues Campos - lrc@cesar.school
 - Luiz Felipe Andreto Nogueira - lfan@cesar.school
-- Maria Clara Leite de Vasconcelos - [email]@cesar.school
+- Maria Clara Leite de Vasconcelos - mclv@cesar.school
 - Mariana Fernandes da Silva - mfs5@cesar.school
