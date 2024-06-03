@@ -16,27 +16,26 @@ int buzzer = 8; // Pino do Piezo (buzzer)
 void setup() {
   // Inicializa a comunicação serial a 9600 bps
   Serial.begin(9600);
-
+  
   // Configura os pinos dos botões como entradas
-  pinMode(btnPin1, INPUT);
-  pinMode(btnPin2, INPUT);
-  pinMode(btnPin3, INPUT);
-  pinMode(btnPin4, INPUT);
-
+  pinMode(btnPin1, INPUT_PULLUP);
+  pinMode(btnPin2, INPUT_PULLUP);
+  pinMode(btnPin3, INPUT_PULLUP);
+  pinMode(btnPin4, INPUT_PULLUP);
+  
   // Configura o pino do buzzer como saída
   pinMode(buzzer, OUTPUT);
 }
-
 void loop() {
   // Lê o estado dos botões
   btnState1 = digitalRead(btnPin1);
   btnState2 = digitalRead(btnPin2);
   btnState3 = digitalRead(btnPin3);
   btnState4 = digitalRead(btnPin4);
-
+  
   // Verifica se o botão 1 foi pressionado
-  if (btnState1 == HIGH) {
-    // Envia a mensagem "btn1" pela serial
+  if (btnState1 == LOW) {
+    // Envia a mensagem "btn1\n" pela serial
     Serial.write("btn1\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
@@ -49,8 +48,8 @@ void loop() {
   } 
   
   // Verifica se o botão 2 foi pressionado
-  if (btnState2 == HIGH) {
-    // Envia a mensagem "btn2" pela serial
+  if (btnState2 == LOW) {
+    // Envia a mensagem "btn2\n" pela serial
     Serial.write("btn2\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
@@ -63,8 +62,8 @@ void loop() {
   } 
   
   // Verifica se o botão 3 foi pressionado
-  if (btnState3 == HIGH) {
-    // Envia a mensagem "btn3" pela serial
+  if (btnState3 == LOW) {
+    // Envia a mensagem "btn3\n" pela serial
     Serial.write("btn3\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
@@ -77,8 +76,8 @@ void loop() {
   } 
   
   // Verifica se o botão 4 foi pressionado
-  if (btnState4 == HIGH) {
-    // Envia a mensagem "btn4" pela serial
+  if (btnState4 == LOW) {
+    // Envia a mensagem "btn4\n" pela serial
     Serial.write("btn4\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
@@ -88,7 +87,8 @@ void loop() {
     noTone(buzzer);
     // Aguarda 1 segundo para evitar múltiplas leituras
     delay(1000);
-  }
+  } 
+  
 
   // Verifica se há dados disponíveis na serial
   if (Serial.available()) {
