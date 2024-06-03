@@ -78,7 +78,7 @@ Cada botão irá iniciar uma seleção de imagens na tela do seu computador.
 - Para nova escolha repita o procedimento.
 ## Licença
 
-### Este projeto está licenciado sob a [Nome da Licença]
+### Este projeto está licenciado sob a MIT License
 
 ## Autores
 - Bernardo Marques de Araujo - bma2@cesar.school
