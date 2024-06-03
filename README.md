@@ -25,30 +25,30 @@ Nossa solução se chama EmoSense, um dispositivo feito em Arduino a base da did
 git clone https://github.com/fthenri/EmoSense-Arduino.git
 ```
 ### Montagem
-Conexão dos Botões
-Botão 1:
-Um terminal do botão ao pino digital 13 do Arduino.
-Outro terminal do botão ao GND.
-Botão 2:
-Um terminal do botão ao pino digital 12 do Arduino.
-Outro terminal do botão ao GND.
-Botão 3:
-Um terminal do botão ao pino digital 11 do Arduino.
-Outro terminal do botão ao GND.
-Botão 4:
-Um terminal do botão ao pino digital 10 do Arduino.
-Outro terminal do botão ao GND.
-Carregar o Código no Arduino
-Baixe ou clone o repositório do projeto.
-Abra o arquivo .ino na Arduino IDE.
-Conecte o Arduino ao computador via USB.
-Selecione a placa e porta correta na Arduino IDE.
-Clique em Upload.
-Configurar o Ambiente Python
-Instalar Python
-Baixe e instale Python 3.x a partir de python.org.
-Instalar Bibliotecas Necessárias
-Abra um terminal (ou prompt de comando) e execute:
+Conexão dos Botões  
+Botão 1:  
+Um terminal do botão ao pino digital 13 do Arduino.  
+Outro terminal do botão ao GND.  
+Botão 2:  
+Um terminal do botão ao pino digital 12 do Arduino.  
+Outro terminal do botão ao GND.  
+Botão 3:  
+Um terminal do botão ao pino digital 11 do Arduino.  
+Outro terminal do botão ao GND.  
+Botão 4:  
+Um terminal do botão ao pino digital 10 do Arduino.  
+Outro terminal do botão ao GND.  
+Carregar o Código no Arduino  
+Baixe ou clone o repositório do projeto.  
+Abra o arquivo .ino na Arduino IDE.  
+Conecte o Arduino ao computador via USB.  
+Selecione a placa e porta correta na Arduino IDE.  
+Clique em Upload.  
+Configurar o Ambiente Python  
+Instalar Python  
+Baixe e instale Python 3.x a partir de python.org.  
+Instalar Bibliotecas Necessárias  
+Abra um terminal (ou prompt de comando) e execute:  
 
 ```sh
 pip install pyserial
