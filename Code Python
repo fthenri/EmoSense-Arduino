@@ -13,6 +13,14 @@ ser = serial.Serial('COM6', 9600, timeout=1)
 # Inicializa o mixer de som
 pygame.mixer.init()
 
+# Caminhos para as imagens
+image_paths = {
+    'btn1': [r"C:\path\to\negative1.jpg", r"C:\path\to\negative2.jpg", r"C:\path\to\negative3.jpg", r"C:\path\to\negative4.jpg"],
+    'btn2': [r"C:\path\to\positive1.jpg", r"C:\path\to\positive2.jpg", r"C:\path\to\positive3.jpg", r"C:\path\to\positive4.jpg"],
+    'btn3': [r"C:\path\to\desire1.jpg", r"C:\path\to\desire2.jpg", r"C:\path\to\desire3.jpg", r"C:\path\to\desire4.jpg"],
+    'btn4': [r"C:\path\to\need1.jpg", r"C:\path\to\need2.jpg", r"C:\path\to\need3.jpg", r"C:\path\to\need4.jpg"]
+}
+
 # Função para mostrar imagem
 def show_image(image_path):
     img = Image.open(image_path)
@@ -27,40 +35,44 @@ def play_sound(sound_path):
     pygame.mixer.music.load(sound_path)
     pygame.mixer.music.play()
 
-# Função para ler os dados da serial e atualizar a interface
+# Função para mostrar múltiplas imagens
+def show_images(image_paths):
+    for widget in panel.winfo_children():
+        widget.destroy()
+    
+    images = [ImageTk.PhotoImage(Image.open(path).resize((250, 250), Image.LANCZOS)) for path in image_paths]
+    for i, img in enumerate(images):
+        label = Label(panel, image=img)
+        label.image = img
+        label.grid(row=0, column=i)
+        label.bind("<Button-1>", lambda e, path=image_paths[i]: select_image(path))
+
+# Função para selecionar imagem
 selected_image = None
 
+def select_image(image_path):
+    global selected_image
+    selected_image = image_path
+    print(f"Imagem selecionada: {image_path}")
+
+# Função para ler os dados da serial e atualizar a interface
 def read_serial():
     global selected_image
+    current_button = None
     while True:
         if ser.in_waiting > 0:
             data = ser.readline().decode('utf-8').strip()
             if data:
                 print(f"Received: {data}")
-                if data == "btn1":
-                    if selected_image == "btn1":
+                if data in image_paths:
+                    if current_button == data and selected_image:
                         play_sound(r"C:\path\to\confirmation_sound.mp3")
+                        show_image(selected_image)
+                        selected_image = None
                     else:
-                        show_image(r"C:\path\to\image1.jpg")
-                        selected_image = "btn1"
-                elif data == "btn2":
-                    if selected_image == "btn2":
-                        play_sound(r"C:\path\to\confirmation_sound.mp3")
-                    else:
-                        show_image(r"C:\path\to\image2.jpg")
-                        selected_image = "btn2"
-                elif data == "btn3":
-                    if selected_image == "btn3":
-                        play_sound(r"C:\path\to\confirmation_sound.mp3")
-                    else:
-                        show_image(r"C:\path\to\image3.png")
-                        selected_image = "btn3"
-                elif data == "btn4":
-                    if selected_image == "btn4":
-                        play_sound(r"C:\path\to\confirmation_sound.mp3")
-                    else:
-                        show_image(r"C:\path\to\image4.png")
-                        selected_image = "btn4"
+                        show_images(image_paths[data])
+                        current_button = data
+                        selected_image = None
 
 # Função para verificar a conexão com o Arduino
 def verify_arduino_connection():
@@ -81,7 +93,7 @@ root = tk.Tk()
 root.title("Interface Serial com Tkinter")
 
 # Configura o painel para mostrar imagens
-panel = Label(root)
+panel = tk.Frame(root)
 panel.pack(side="bottom", fill="both", expand="yes")
 
 if __name__ == "__main__":
