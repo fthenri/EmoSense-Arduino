@@ -37,7 +37,7 @@ void loop() {
   // Verifica se o botão 1 foi pressionado
   if (btnState1 == HIGH) {
     // Envia a mensagem "btn1" pela serial
-    Serial.write("btn1");
+    Serial.write("btn1\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
     // Aguarda 100 milissegundos
@@ -51,7 +51,7 @@ void loop() {
   // Verifica se o botão 2 foi pressionado
   if (btnState2 == HIGH) {
     // Envia a mensagem "btn2" pela serial
-    Serial.write("btn2");
+    Serial.write("btn2\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
     // Aguarda 100 milissegundos
@@ -65,7 +65,7 @@ void loop() {
   // Verifica se o botão 3 foi pressionado
   if (btnState3 == HIGH) {
     // Envia a mensagem "btn3" pela serial
-    Serial.write("btn3");
+    Serial.write("btn3\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
     // Aguarda 100 milissegundos
@@ -79,7 +79,7 @@ void loop() {
   // Verifica se o botão 4 foi pressionado
   if (btnState4 == HIGH) {
     // Envia a mensagem "btn4" pela serial
-    Serial.write("btn4");
+    Serial.write("btn4\n");
     // Emite um som no buzzer
     tone(buzzer, 2500);
     // Aguarda 100 milissegundos
@@ -88,5 +88,16 @@ void loop() {
     noTone(buzzer);
     // Aguarda 1 segundo para evitar múltiplas leituras
     delay(1000);
-  } 
+  }
+
+  // Verifica se há dados disponíveis na serial
+  if (Serial.available()) {
+    // Lê a string recebida até o caractere de nova linha
+    String command = Serial.readStringUntil('\n');
+    // Verifica se o comando recebido é "ping"
+    if (command == "ping") {
+      // Responde com "pong"
+      Serial.println("pong");
+    }
+  }
 }
