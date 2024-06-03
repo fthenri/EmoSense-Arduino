@@ -43,10 +43,21 @@ def select_image(image_path):
     print(f"Imagem selecionada: {image_path}")
     print("Pressione o mesmo botão novamente para confirmar a seleção.")
 
-# Função para tocar som
-def play_sound(sound_path):
-    pygame.mixer.music.load(sound_path)
-    pygame.mixer.music.play()
+# Função para emitir som através do buzzer do Arduino
+def play_sound():
+    # Frequência do som (em Hz)
+    frequency = 2500  # Ajuste conforme necessário
+    
+    # Duração do som (em milissegundos)
+    duration = 100    # Ajuste conforme necessário
+    
+    # Envie a mensagem "tone\n" pela porta serial para acionar o som no Arduino
+    ser.write("tone\n".encode())
+    
+    # Emite o som no buzzer
+    ser.write(f"{frequency}\n".encode())  # Envie a frequência
+    ser.write(f"{duration}\n".encode())   # Envie a duração
+
 
 # Função para ler os dados da serial e atualizar a interface
 def read_serial():
