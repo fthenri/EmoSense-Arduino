@@ -23,8 +23,8 @@ Nossa solução se chama EmoSense, um dispositivo feito em Arduino a base da did
 ### Instalação
 ```sh
 git clone https://github.com/fthenri/EmoSense-Arduino.git
-
-Montagem
+```
+### Montagem
 Conexão dos Botões
 Botão 1:
 Um terminal do botão ao pino digital 13 do Arduino.
@@ -49,9 +49,14 @@ Instalar Python
 Baixe e instale Python 3.x a partir de python.org.
 Instalar Bibliotecas Necessárias
 Abra um terminal (ou prompt de comando) e execute:
+
+```sh
 pip install pyserial
 pip install tk
-Como usar o dispositivo?
+```
+
+## Como usar o dispositivo?
+
 Funcionamento: Após a montagem e a inserção do código funcional no Arduino, siga os passos abaixo:
 
 Insira um cabo USB na entrada de energia do Arduino e o conecte a uma entrada USB de seu computador.
@@ -63,9 +68,9 @@ Escolha a imagem que mais se assemelha à sua situação com o mouse e aperte o 
 Quando confirmada, haverá disparo de um som e a imagem permanecerá em sua tela.
 Para nova escolha, repita o procedimento.
 Licença
-Este projeto está licenciado sob a [Nome da Licença] (preencha com a licença correta).
+Este projeto está licenciado sob a [Nome da Licença]
 
-Autores
+## Autores
 Bernardo Marques de Araujo - bma2@cesar.school
 Carlos Eduardo Espósito Cardoso - ceec@cesar.school
 Guilherme Mourão Vieira Coelho - gmvc@cesar.school
@@ -73,5 +78,5 @@ Henrique Figueirêdo Tefile - hft@cesar.school
 José Gabriel Santiago de Santana - jgss@cesar.school
 Lucas Rodrigues Campos - lrc@cesar.school
 Luiz Felipe Andreto Nogueira - lfan@cesar.school
-Maria Clara Leite de Vasconcelos - [email]@cesar.school (preencha o email correto)
+Maria Clara Leite de Vasconcelos - [email]@cesar.school
 Mariana Fernandes da Silva - mfs5@cesar.school
