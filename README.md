@@ -75,9 +75,9 @@ pip install tk
 - Escolha a imagem que mais se assemelha à sua situação com o mouse e aperte o mesmo botão novamente para confirmação.
 - Quando confirmada, haverá disparo de um som e a imagem permanecerá em sua tela.
 - Para nova escolha, repita o procedimento.
-- Licença
+## Licença
 
-## Este projeto está licenciado sob a [Nome da Licença]
+### Este projeto está licenciado sob a [Nome da Licença]
 
 ## Autores
 - Bernardo Marques de Araujo - bma2@cesar.school
