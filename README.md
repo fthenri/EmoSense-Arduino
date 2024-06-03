@@ -9,7 +9,8 @@ Este ReadMe foi criado com o intuito de explicar detalhadamente o funcionamento 
 protótipo e fornecer orientações passo a passo sobre como utilizá-lo. Esperamos que, através
 desta solução, possamos contribuir significativamente para melhorar a comunicação e a
 qualidade de vida das crianças com TEA.  
-Para o protótipo, é essencial contar com o auxílio de um computador para conectar o Arduino.
+
+- Para o protótipo, é essencial contar com o auxílio de um computador para conectar o Arduino.
 ## Requisitos
 
 ### Hardware
