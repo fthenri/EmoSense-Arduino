@@ -1,8 +1,15 @@
 # EmoSense
 
 ## Descrição
-Nossa solução se chama EmoSense, um dispositivo feito em Arduino a base da didática LAMP, que implementa emoções, necessidades e vontades, facilitando a comunicação de autistas não-verbais por meio de luzes, botões e imagens.
-
+Para o projeto da faculdade, o grupo 17 desenvolveu uma solução inovadora
+destinada a facilitar a comunicação de crianças com Transtorno do Espectro Autista (TEA).  
+Com base nas soluções já existentes, criamos o EmoSense, uma solução figital (física e
+digital) que visa proporcionar uma experiência mais eficiente e inclusiva.  
+Este tutorial foi criado com o intuito de explicar detalhadamente o funcionamento do nosso
+protótipo e fornecer orientações passo a passo sobre como utilizá-lo. Esperamos que, através
+desta solução, possamos contribuir significativamente para melhorar a comunicação e a
+qualidade de vida das crianças com TEA.  
+Para o protótipo, é essencial contar com o auxílio de um computador para conectar o Arduino.
 ## Requisitos
 
 ### Hardware
