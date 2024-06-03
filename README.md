@@ -57,26 +57,26 @@ pip install tk
 
 ## Como usar o dispositivo?
 
-Funcionamento: Após a montagem e a inserção do código funcional no Arduino, siga os passos abaixo:
+### Funcionamento: Após a montagem e a inserção do código funcional no Arduino, siga os passos abaixo:
 
-Insira um cabo USB na entrada de energia do Arduino e o conecte a uma entrada USB de seu computador.
-Execute o funcionamento do Arduino.
-Após confirmação de bom funcionamento do Arduino, escolha um dos botões. Cada botão irá iniciar uma seleção de imagens na tela do seu computador.
-O botão vermelho é referente a sentimentos negativos, o verde a sentimentos positivos, o amarelo a vontades e o azul a necessidades.
-Após apertar o botão, 4 imagens referentes à sua escolha vão aparecer na tela.
-Escolha a imagem que mais se assemelha à sua situação com o mouse e aperte o mesmo botão novamente para confirmação.
-Quando confirmada, haverá disparo de um som e a imagem permanecerá em sua tela.
-Para nova escolha, repita o procedimento.
-Licença
-Este projeto está licenciado sob a [Nome da Licença]
+- Insira um cabo USB na entrada de energia do Arduino e o conecte a uma entrada USB de seu computador.
+- Execute o funcionamento do Arduino.
+- Após confirmação de bom funcionamento do Arduino, escolha um dos botões. Cada botão irá iniciar uma seleção de imagens na tela do seu computador.
+- O botão vermelho é referente a sentimentos negativos, o verde a sentimentos positivos, o amarelo a vontades e o azul a necessidades.
+- Após apertar o botão, 4 imagens referentes à sua escolha vão aparecer na tela.
+- Escolha a imagem que mais se assemelha à sua situação com o mouse e aperte o mesmo botão novamente para confirmação.
+- Quando confirmada, haverá disparo de um som e a imagem permanecerá em sua tela.
+- Para nova escolha, repita o procedimento.
+- Licença
+- Este projeto está licenciado sob a [Nome da Licença]
 
 ## Autores
-Bernardo Marques de Araujo - bma2@cesar.school
-Carlos Eduardo Espósito Cardoso - ceec@cesar.school
-Guilherme Mourão Vieira Coelho - gmvc@cesar.school
-Henrique Figueirêdo Tefile - hft@cesar.school
-José Gabriel Santiago de Santana - jgss@cesar.school
-Lucas Rodrigues Campos - lrc@cesar.school
-Luiz Felipe Andreto Nogueira - lfan@cesar.school
-Maria Clara Leite de Vasconcelos - [email]@cesar.school
-Mariana Fernandes da Silva - mfs5@cesar.school
+- Bernardo Marques de Araujo - bma2@cesar.school
+- Carlos Eduardo Espósito Cardoso - ceec@cesar.school
+- Guilherme Mourão Vieira Coelho - gmvc@cesar.school
+- Henrique Figueirêdo Tefile - hft@cesar.school
+- José Gabriel Santiago de Santana - jgss@cesar.school
+- Lucas Rodrigues Campos - lrc@cesar.school
+- Luiz Felipe Andreto Nogueira - lfan@cesar.school
+- Maria Clara Leite de Vasconcelos - [email]@cesar.school
+- Mariana Fernandes da Silva - mfs5@cesar.school
