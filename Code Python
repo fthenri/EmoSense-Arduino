@@ -21,8 +21,19 @@ image_paths = {
     'btn4': [r"C:\path\to\need1.jpg", r"C:\path\to\need2.jpg", r"C:\path\to\need3.jpg", r"C:\path\to\need4.jpg"]
 }
 
-# Inicializa o mixer de som
-pygame.mixer.init()
+# Função para verificar a conexão com o Arduino
+def verify_arduino_connection():
+    ser.write(b'ping\n')
+    start_time = time.time()
+    while True:
+        if ser.in_waiting > 0:
+            response = ser.readline().decode('utf-8').strip()
+            if response == "pong":
+                print("Arduino está funcionando corretamente.")
+                return True
+        if time.time() - start_time > 5:  # Timeout de 5 segundos
+            print("Falha ao conectar com o Arduino.")
+            return False
 
 # Função para mostrar múltiplas imagens
 def show_images(image_paths):
