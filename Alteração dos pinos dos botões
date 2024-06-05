@@ -1,8 +1,8 @@
 // Definição dos pinos dos botões
 int btnPin1 = 13; // Pino do botão 1
-int btnPin2 = 12; // Pino do botão 2
-int btnPin3 = 11; // Pino do botão 3
-int btnPin4 = 10; // Pino do botão 4
+int btnPin2 = 10; // Pino do botão 2
+int btnPin3 = 6; // Pino do botão 3
+int btnPin4 = 2; // Pino do botão 4
 
 // Variáveis para armazenar o estado dos botões
 bool btnState1; // Estado do botão 1 
