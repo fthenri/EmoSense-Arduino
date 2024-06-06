@@ -1,6 +1,5 @@
 import serial
 import time
-import os
 import tkinter as tk
 from tkinter import Label
 from PIL import Image, ImageTk
@@ -15,10 +14,10 @@ selected_image = None
 
 # Caminhos para as imagens
 image_paths = {
-    'btn1': [r"C:/path/to/negative1.jpg", r"C:/path/to/negative2.jpg", r"C:/path/to/negative3.jpg", r"C:/path/to/negative4.jpg"],
-    'btn2': [r"C:/path/to/positive1.jpg", r"C:/path/to/positive2.jpg", r"C:/path/to/positive3.jpg", r"C:/path/to/positive4.jpg"],
-    'btn3': [r"C:/path/to/desire1.jpg", r"C:/path/to/desire2.jpg", r"C:/path/to/desire3.jpg", r"C:/path/to/desire4.jpg"],
-    'btn4': [r"C:/path/to/need1.jpg", r"C:/path/to/need2.jpg", r"C:/path/to/need3.jpg", r"C:/path/to/need4.jpg"]
+    'btn1': [r"/img/negativo1.png", r"/img/negativo2.png", r"/img/negativo3.png", r"/img/negativo4.png"],
+    'btn2': [r"/img/positivo1.png", r"/img/positivo2.png", r"/img/positivo3.png", r"/img/positivo4.png"],
+    'btn3': [r"/img/vontade1.png", r"/img/vontade2.png", r"/img/vontade3.png", r"/img/vontade4.png"],
+    'btn4': [r"/img/desejo1.png", r"C:/path/to/need2.jpg", r"C:/path/to/need3.jpg", r"C:/path/to/need4.jpg"]
 }
 
 # Função para verificar a conexão com o Arduino
