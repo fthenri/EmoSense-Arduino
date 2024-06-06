@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 import threading
 
 # Configuração da porta serial
-ser = serial.Serial('COM6', 9600, timeout=1)
+ser = serial.Serial('COM11', 9600, timeout=1)
 
 # Variáveis globais para armazenar a galeria e a imagem selecionadas
 selected_gallery = None
@@ -15,10 +15,10 @@ selected_image = None
 
 # Caminhos para as imagens
 image_paths = {
-    'btn1': [r"C:\path\to\negative1.jpg", r"C:\path\to\negative2.jpg", r"C:\path\to\negative3.jpg", r"C:\path\to\negative4.jpg"],
-    'btn2': [r"C:\path\to\positive1.jpg", r"C:\path\to\positive2.jpg", r"C:\path\to\positive3.jpg", r"C:\path\to\positive4.jpg"],
-    'btn3': [r"C:\path\to\desire1.jpg", r"C:\path\to\desire2.jpg", r"C:\path\to\desire3.jpg", r"C:\path\to\desire4.jpg"],
-    'btn4': [r"C:\path\to\need1.jpg", r"C:\path\to\need2.jpg", r"C:\path\to\need3.jpg", r"C:\path\to\need4.jpg"]
+    'btn1': [r"C:/path/to/negative1.jpg", r"C:/path/to/negative2.jpg", r"C:/path/to/negative3.jpg", r"C:/path/to/negative4.jpg"],
+    'btn2': [r"C:/path/to/positive1.jpg", r"C:/path/to/positive2.jpg", r"C:/path/to/positive3.jpg", r"C:/path/to/positive4.jpg"],
+    'btn3': [r"C:/path/to/desire1.jpg", r"C:/path/to/desire2.jpg", r"C:/path/to/desire3.jpg", r"C:/path/to/desire4.jpg"],
+    'btn4': [r"C:/path/to/need1.jpg", r"C:/path/to/need2.jpg", r"C:/path/to/need3.jpg", r"C:/path/to/need4.jpg"]
 }
 
 # Função para verificar a conexão com o Arduino
