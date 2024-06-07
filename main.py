@@ -3,7 +3,7 @@ import serial
 import threading
 
 class MenuApp:
-    def _init_(self):
+    def __init__(self):
         # Inicializa o Pygame
         pygame.init()
 
@@ -21,7 +21,7 @@ class MenuApp:
         self.image_paths = {
             "MENU": "menu.jpg",
             "btn1": "btn1.jpg",
-            "btn2": "btn2.png",
+            "btn2": "btn2.jpg",
             "btn3": "btn3.jpg",
             "btn4": "btn4.jpg",
             "btn1_op1": "btn1_op1.png",
@@ -82,6 +82,6 @@ class MenuApp:
         # Finaliza o Pygame
         pygame.quit()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     app = MenuApp()
     app.run()
