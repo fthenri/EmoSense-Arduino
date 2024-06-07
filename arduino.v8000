@@ -1,0 +1,166 @@
+// Definição dos pinos dos botões
+int btnPin1 = 13; // Pino do botão 1
+int btnPin2 = 10; // Pino do botão 2
+int btnPin3 = 6;  // Pino do botão 3
+int btnPin4 = 2;  // Pino do botão 4
+
+// Definição do pino do buzzer
+int buzzer = 8; // Pino do Piezo (buzzer)
+
+// Variáveis para armazenar o estado dos botões
+bool btnState1;
+bool btnState2;
+bool btnState3;
+bool btnState4;
+
+// Variáveis para armazenar a sequência
+int sequence[2] = {-1, -1};
+int currentIndex = 0;
+bool firstButtonPressed = false;
+bool sequenceSent = false;
+
+void setup() {
+  // Inicializa a comunicação serial a 9600 bps
+  Serial.begin(9600);
+
+  // Envia a mensagem "MENU" quando o programa inicia
+  Serial.println("MENU");
+  
+  // Configura os pinos dos botões como entradas
+  pinMode(btnPin1, INPUT_PULLUP);
+  pinMode(btnPin2, INPUT_PULLUP);
+  pinMode(btnPin3, INPUT_PULLUP);
+  pinMode(btnPin4, INPUT_PULLUP);
+  
+  // Configura o pino do buzzer como saída
+  pinMode(buzzer, OUTPUT);
+}
+
+void loop() {
+  // Lê o estado dos botões
+  btnState1 = digitalRead(btnPin1);
+  btnState2 = digitalRead(btnPin2);
+  btnState3 = digitalRead(btnPin3);
+  btnState4 = digitalRead(btnPin4);
+
+  // Verifica se os botões foram pressionados
+  if (sequenceSent) {
+    if (btnState1 == LOW || btnState2 == LOW || btnState3 == LOW || btnState4 == LOW) {
+      Serial.println("MENU");
+      sequenceSent = false;
+      delay(500); // Debounce
+    }
+  } else if (!firstButtonPressed) {
+    if (btnState1 == LOW) {
+      playBuzzer();
+      Serial.println("btn1");
+      addToSequence(1);
+      firstButtonPressed = true;
+      delay(500); // Debounce
+    } else if (btnState2 == LOW) {
+      playBuzzer();
+      Serial.println("btn2");
+      addToSequence(2);
+      firstButtonPressed = true;
+      delay(500); // Debounce
+    } else if (btnState3 == LOW) {
+      playBuzzer();
+      Serial.println("btn3");
+      addToSequence(3);
+      firstButtonPressed = true;
+      delay(500); // Debounce
+    } else if (btnState4 == LOW) {
+      playBuzzer();
+      Serial.println("btn4");
+      addToSequence(4);
+      firstButtonPressed = true;
+      delay(500); // Debounce
+    }
+  } else {
+    if (btnState1 == LOW) {
+      addToSequence(1);
+      delay(500); // Debounce
+    } else if (btnState2 == LOW) {
+      addToSequence(2);
+      delay(500); // Debounce
+    } else if (btnState3 == LOW) {
+      addToSequence(3);
+      delay(500); // Debounce
+    } else if (btnState4 == LOW) {
+      addToSequence(4);
+      delay(500); // Debounce
+    }
+  }
+}
+
+// Função para adicionar o botão pressionado na sequência
+void addToSequence(int btnNumber) {
+  sequence[currentIndex] = btnNumber;
+  currentIndex++;
+  if (currentIndex >= 2) {
+    checkSequence();
+    currentIndex = 0;
+    firstButtonPressed = false; // Reseta o flag após enviar a sequência
+    sequenceSent = true; // Define a flag para indicar que a sequência foi enviada
+  }
+}
+
+// Função para verificar a sequência e enviar a mensagem correspondente
+void checkSequence() {
+  if (sequence[0] == 1 && sequence[1] == 1) {
+    Serial.println("btn1_op1");
+    playBuzzer();
+  } else if (sequence[0] == 1 && sequence[1] == 2) {
+    Serial.println("btn1_op2");
+    playBuzzer();
+  } else if (sequence[0] == 1 && sequence[1] == 3) {
+    Serial.println("btn1_op3");
+    playBuzzer();
+  } else if (sequence[0] == 1 && sequence[1] == 4) {
+    Serial.println("btn1_op4");
+    playBuzzer();
+  } else if (sequence[0] == 2 && sequence[1] == 1) {
+    Serial.println("btn2_op1");
+    playBuzzer();
+  } else if (sequence[0] == 2 && sequence[1] == 2) {
+    Serial.println("btn2_op2");
+    playBuzzer();
+  } else if (sequence[0] == 2 && sequence[1] == 3) {
+    Serial.println("btn2_op3");
+    playBuzzer();
+  } else if (sequence[0] == 2 && sequence[1] == 4) {
+    Serial.println("btn2_op4");
+    playBuzzer();
+  } else if (sequence[0] == 3 && sequence[1] == 1) {
+    Serial.println("btn3_op1");
+    playBuzzer();
+  } else if (sequence[0] == 3 && sequence[1] == 2) {
+    Serial.println("btn3_op2");
+    playBuzzer();
+  } else if (sequence[0] == 3 && sequence[1] == 3) {
+    Serial.println("btn3_op3");
+    playBuzzer();
+  } else if (sequence[0] == 3 && sequence[1] == 4) {
+    Serial.println("btn3_op4");
+    playBuzzer();
+  } else if (sequence[0] == 4 && sequence[1] == 1) {
+    Serial.println("btn4_op1");
+    playBuzzer();
+  } else if (sequence[0] == 4 && sequence[1] == 2) {
+    Serial.println("btn4_op2");
+    playBuzzer();
+  } else if (sequence[0] == 4 && sequence[1] == 3) {
+    Serial.println("btn4_op3");
+    playBuzzer();
+  } else if (sequence[0] == 4 && sequence[1] == 4) {
+    Serial.println("btn4_op4");
+    playBuzzer();
+  }
+}
+
+// Função para tocar o buzzer
+void playBuzzer() {
+  tone(buzzer, 2500); // Toca o buzzer a 2500 Hz
+  delay(100);        // Espera 1 segundo
+  noTone(buzzer);     // Para o som do buzzer
+}
