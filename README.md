@@ -59,8 +59,9 @@ Outro terminal do botão ao GND.
 - Abra um terminal (ou prompt de comando) e execute:  
 
 ```sh
-pip install pyserial
-pip install tk
+pip install pygame
+pip install serial
+pip install threading
 ```
 
 ## Como usar o dispositivo?
