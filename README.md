@@ -24,7 +24,7 @@ qualidade de vida das crianças com TEA.
 ### Software
 - Arduino IDE
 - Python 3.x
-  - Bibliotecas Python: Pyserial, Tkinter
+  - Bibliotecas Python: Pyserial, PyGame
 
 ## Instalação e Montagem
 
